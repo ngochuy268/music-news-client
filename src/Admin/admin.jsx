@@ -80,19 +80,32 @@ const InputData = () => {
     }
     try {
       
-      await axios.post(`${process.env.REACT_APP_API_URL}/api/pop_music`, formData);
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/pop_music`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData);
+    });
 
-      console.log('Data saved successfully');
-      setSubmitSuccess(true);
-      setFormData({
+      if (response.ok) {
+        console.log('Data saved successfully');
+        setSubmitSuccess(true);
+        setFormData({
 
-        name: '',
-        content: '',
-        link_img: '',
-        link_video: '',
-        author: '',
-        type: ''
-      });
+          name: '',
+          content: '',
+          link_img: '',
+          link_video: '',
+          author: '',
+          type: ''
+        });
+          return { success: true, message: "商品が正常に追加されました!" };    
+      } else {
+          const errorData = await response.json();
+          return { success: false, message: errorData.message || "エラーが発生しました。もう一度お試しください。" };
+      }
+      
     } catch (error) {
         console.error('Error saving data:', error);
     } 
