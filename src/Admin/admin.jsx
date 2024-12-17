@@ -80,7 +80,7 @@ const InputData = () => {
     }
     try {
       
-      await axios.post('http://localhost:8081/api/pop_music', formData);
+      await axios.post(`${process.env.REACT_APP_API_URL}/api/pop_music`, formData);
 
       console.log('Data saved successfully');
       setSubmitSuccess(true);
