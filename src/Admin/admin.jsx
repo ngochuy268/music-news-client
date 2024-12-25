@@ -78,15 +78,14 @@ const InputData = () => {
       setErrors(newErrors);
       return;
     }
-    try {
-      
+    try {      
       const response = await fetch(`${process.env.REACT_APP_API_URL}/api/pop_music`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(formData)
-    });
+      });
 
       if (response.ok) {
         console.log('Data saved successfully');

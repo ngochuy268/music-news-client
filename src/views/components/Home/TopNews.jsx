@@ -41,7 +41,8 @@ function TopNews({ news, loading }) {
 };
 
 const linkStyles = {
-    fontSize : '25px',
+    fontSize : '15px',
+    color: 'white',
     '@media (maxWidth: 768px)': { 
         fontSize: '14px',
     },
@@ -61,7 +62,7 @@ const linkStyles = {
                                     <div className='tn-img' to={`/${item.name.toLowerCase().replace(/\s+/g, '-')}`} target="_parent">
                                         <img src={require(`../../../img/${item.link_img}`)} alt="news" style={{ borderRadius: '10px', overflow: 'hidden' }}/>
                                         <div className='tn-title'style={{ borderRadius: '10px', overflow: 'hidden' }} >
-                                            <Link style={linkStyles} to={`/${item.name.toLowerCase().replace(/\s+/g, '-')}`} target="_parent">{item.name} </Link>                                       
+                                            <Link style={linkStyles} to={`/${item.name.toLowerCase().replace(/\s+/g, '-')}`} target="_parent">{item.name} </Link>                                          
                                         </div>                                   
                                     </div>  
                                 </div>
@@ -75,7 +76,7 @@ const linkStyles = {
                                 <div className='tn-img'>
                                     <img src={require(`../../../img/${item.link_img}`)} alt={`News ${index+1}`} />
                                     <div className='tn-title'>
-                                        <Link to={`/${item.name.toLowerCase().replace(/\s+/g, '-')}`} target="_parent">{item.name}</Link>
+                                        <Link to={`/${item.name.toLowerCase().replace(/\s+/g, '-')}`} target="_parent">{item.name}</Link>                                        
                                     </div>
                                 </div>
                             </Col>

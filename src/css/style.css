@@ -830,6 +830,25 @@ button.btn:hover {
   width: 100%;
 }
 
+@media (min-width: 577px) and (max-width: 767px) {
+  .cat-singer-news .col-md-11 {
+    margin: 0 10px;
+  }
+  .cn-title a {
+    font-size: 14px !important;
+  }
+
+  .top-news .tn-title a{
+    font-size: 14px !important;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+  .top-news .tn-title a{
+    font-size: 14px !important;
+  }
+}
+
 .cat-singer-news .cn-img:hover img {
   filter: blur(3px);
   -webkit-filter: blur(3px);
@@ -946,6 +965,7 @@ button.btn:hover {
   background: #ffffff;
 }
 
+
 .tn-title {
   position: absolute;
   bottom: 0;
@@ -957,6 +977,7 @@ button.btn:hover {
     rgba(0, 0, 0, 0.7),
     rgba(0, 0, 0, 0.9)
   );
+
 }
 
 .tn-title a {

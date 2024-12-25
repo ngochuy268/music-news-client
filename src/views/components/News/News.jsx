@@ -52,7 +52,7 @@ function News({ news, loading }) {
   const videoOpts = getVideoOpts;
   const sliderSettings = getSliderSettings;
 
-
+console.log(article)
 
   return (
     <div className="single-news">

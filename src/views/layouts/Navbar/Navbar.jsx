@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 import { useNavbarController } from '../../../controllers/navbarcontroller';
@@ -18,9 +18,10 @@ function Navbarfunc({ news, loading }) {
     handleInputChange
   } = useNavbarController(news);
 
+  const { types, authors } = getUniqueCategories();
+
   if(loading) return null;
 
-  const { types, authors } = getUniqueCategories();
 
   return (
     <div className={`nav-bar ${isSticky ? 'nav-sticky' : ''}`}>
