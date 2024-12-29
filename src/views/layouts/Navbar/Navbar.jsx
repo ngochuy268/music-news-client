@@ -10,15 +10,12 @@ function Navbarfunc({ news, loading }) {
   const {
     isSticky,
     searchValue,
-    searchResults,
-    showResults,
-    searchRef,
     getUniqueCategories,
     handleSearch,
     handleInputChange
   } = useNavbarController(news);
 
-  const { types, authors } = getUniqueCategories();
+  const { types } = getUniqueCategories();
 
   if(loading) return null;
 
@@ -29,21 +26,10 @@ function Navbarfunc({ news, loading }) {
         <Navbar className='nav-bar navbar-dark' expand="md">
           <Navbar.Brand href="#" className='navbar-brand'>MENU</Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarCollapse" />
-
           <Navbar.Collapse id="navbarCollapse" className="justify-content-between">
             <Nav className="mr-auto">
               <Nav.Link as={Link} to="/" className="nav-item nav-link">Home</Nav.Link>
-              <NavDropdown title="SINGER" id="basic-nav-dropdown" className="nav-item">
-                {authors.map((author, index) => (
-                  <NavDropdown.Item 
-                    key={Math.random(index)} 
-                    href={`/singer/${author.toLowerCase().replace(/\s+/g, '-')}`} 
-                    className="dropdown-item"
-                  >
-                    {author}
-                  </NavDropdown.Item>
-                ))}
-              </NavDropdown>
+              <Nav.Link as={Link} to="/singer" className="nav-item nav-link">SINGER</Nav.Link>
               <NavDropdown title="TYPE" id="basic-nav-dropdown" className="nav-item">
                 {types.map((type, index) => (
                   <NavDropdown.Item 
@@ -58,13 +44,10 @@ function Navbarfunc({ news, loading }) {
               <Nav.Link as={Link} to="/contact" className="nav-item nav-link">Contact Us</Nav.Link>
             </Nav>
             
-            <SearchBar 
-              searchRef={searchRef}
+            <SearchBar             
               searchValue={searchValue}
               handleInputChange={handleInputChange}
-              handleSearch={handleSearch}
-              showResults={showResults}
-              searchResults={searchResults}
+              handleSearch={handleSearch}           
             />
             
             <SocialLinks />

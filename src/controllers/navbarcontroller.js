@@ -1,11 +1,12 @@
 import { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export const useNavbarController = (news) => {
   const [isSticky, setIsSticky] = useState(false);
   const [searchValue, setSearchValue] = useState('');
-  const [searchResults, setSearchResults] = useState([]);
-  const [showResults, setShowResults] = useState(false);
-  const searchRef = useRef(null);
+  const navigate = useNavigate();
+
+  // ------------------------------------------
 
   const getUniqueCategories = () => {
     return {
@@ -14,38 +15,20 @@ export const useNavbarController = (news) => {
     };
   };
 
+   // ------------------------------------------
+
   const handleSearch = (e) => {
     e.preventDefault();
-    const results = news.filter(item => 
+    const results = news.filter(item =>
       item.name.toLowerCase().includes(searchValue.toLowerCase()) ||
       item.author.toLowerCase().includes(searchValue.toLowerCase()) ||
       item.type.toLowerCase().includes(searchValue.toLowerCase())
     );
-    setSearchResults(results);
-    setShowResults(true);
+    navigate('/search', { state: { results } });
+    setSearchValue('');
   };
 
-  const handleInputChange = (e) => {
-    setSearchValue(e.target.value);
-    if(e.target.value) {
-      handleSearch(e);
-    } else {
-      setShowResults(false);
-    }
-  };
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (searchRef.current && !searchRef.current.contains(event.target)) {
-        setShowResults(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);
+   // ------------------------------------------
 
   useEffect(() => {
     const handleScroll = () => {
@@ -57,14 +40,15 @@ export const useNavbarController = (news) => {
     };
   }, []);
 
+  const handleInputChange = (e) => {
+    setSearchValue(e.target.value);
+  };
+
   return {
     isSticky,
     searchValue,
-    searchResults,
-    showResults,
-    searchRef,
+    handleInputChange,
     getUniqueCategories,
     handleSearch,
-    handleInputChange
   };
 };

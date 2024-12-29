@@ -22,6 +22,12 @@ function News({ news, loading }) {
     getVideoOpts
   } = useMusicNewsController(news, articleTitle);
 
+  const article = getArticle();
+  const relatedArticles = getRelatedArticles(article);
+  const random5News = getRandomNews(relatedArticles, 5);
+  const videoOpts = getVideoOpts;
+  const sliderSettings = getSliderSettings;
+
   useEffect(() => {
     if (!loading) {
       const article = getArticle();
@@ -46,13 +52,6 @@ function News({ news, loading }) {
     </div>
   );
 
-  const article = getArticle();
-  const relatedArticles = getRelatedArticles(article);
-  const random5News = getRandomNews(relatedArticles, 5);
-  const videoOpts = getVideoOpts;
-  const sliderSettings = getSliderSettings;
-
-console.log(article)
 
   return (
     <div className="single-news">

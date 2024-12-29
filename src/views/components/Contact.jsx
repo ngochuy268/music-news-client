@@ -76,7 +76,7 @@ function Contact() {
             <Col md={4}>
               <div className="contact-info">
                 <h3>Keep in touch</h3>
-                <p>We are always here to assist you. Don't hesitate to reach out to us via the following means for any inquiries, feedback, or concerns related to your experience on Legendary Vibes.</p>
+                <p style={{color: 'black'}}>We are always here to assist you. Don't hesitate to reach out to us via the following means for any inquiries, feedback, or concerns related to your experience on Legendary Vibes.</p>
                 <h4><FontAwesomeIcon icon={faMapMarkerAlt} /> 123 News Street, NY, USA</h4>
                 <h4><FontAwesomeIcon icon={faEnvelope} /> popvibes.net@mail.com</h4>
                 <h4><FontAwesomeIcon icon={faPhone} /> +1 848 328 0238</h4>

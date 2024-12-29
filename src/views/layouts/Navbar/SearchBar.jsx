@@ -1,9 +1,9 @@
 import React from 'react';
 import '../../../css/style.css';
 
-const SearchBar = ({ searchRef, searchValue, handleInputChange, handleSearch, showResults, searchResults }) => {
+const SearchBar = ({  searchValue, handleInputChange, handleSearch }) => {
   return (
-    <div className="search-container" ref={searchRef}>
+    <div className="search-container">
       <form className="search-form" onSubmit={handleSearch}>
         <input
           type="text"
@@ -16,22 +16,6 @@ const SearchBar = ({ searchRef, searchValue, handleInputChange, handleSearch, sh
           <i className="fa fa-search"></i>
         </button>
       </form>
-      {showResults && searchResults.length > 0 && (
-        <div className="search-results-dropdown">
-          {searchResults.map(item => (
-            <a 
-              href={`/${item.name.toLowerCase().replace(/\s+/g, '-')}`} 
-              key={item.id} 
-              className="search-result-item"
-            >
-              <div className="result-info">
-                <div className="result-name">{item.name}</div>
-                <div className="result-author">{item.author}</div>
-              </div>
-            </a>
-          ))}
-        </div>
-      )}
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Col, Container, Row } from "react-bootstrap";
 import { useParams } from 'react-router-dom';
 import { useSingerController } from '../../../controllers/singerController';
@@ -11,20 +11,19 @@ import "slick-carousel/slick/slick-theme.css";
 import '../../../css/style.css';
 
 function Singer({ news, loading }) {
-  const { singerName } = useParams();
   const {
-    getSingerNews,
-    getSingerInfo,
-    getProcessedChunks,
-    sliderSettings
-  } = useSingerController(news, singerName);
+    getNewsByAuthor,
+    sliderSettings,
+    showSliders,
+    toggleSlider,
+  } = useSingerController(news);
+  const newsAuthor = getNewsByAuthor(news);
 
   useEffect(() => {
     if (!loading) {
-      const singerInfo = getSingerInfo();
-      document.title = singerInfo.type;
+      document.title = "Singer";
     }
-  }, [loading, getSingerInfo]);
+  }, [loading]);
 
   if(loading) return (
     <div style={{ 
@@ -42,25 +41,38 @@ function Singer({ news, loading }) {
     </div>
   );
 
-  const singerNews = getSingerNews();
-  const singerInfo = getSingerInfo();
-  const chunkedArrays = getProcessedChunks(singerNews);
-
-  
-
   return (
     <div className="cat-singer-news" style={{margin: '40px 0'}}>
       <Container>
-        <Row>                    
-          <h2>{singerInfo.author}</h2>
-          {singerNews.length === 1 ? (
-            <SingleNews news={singerNews[0]} />
-          ) : (
-            <NewsSlider 
-              chunkedArrays={chunkedArrays} 
-              settings={sliderSettings} 
-            />
-          )}
+        <Row>   
+          {newsAuthor.map(({author, items}, index) => (
+            <>
+              <h2 key={index}>{author}</h2>
+              <button
+                onClick={() => toggleSlider(index)}
+                style={{
+                  padding: '10px 20px',
+                  backgroundColor: '#007bff',
+                  color: '#fff',
+                  border: 'none',
+                  borderRadius: '5px',
+                  cursor: 'pointer',
+                  marginBottom: '30px',
+                  width: 'fit-content',
+                  marginLeft: '12px'
+                }}
+              >
+                {showSliders[index] ? 'Hide News' : 'Show News'}
+              </button>
+              {showSliders[index] && (
+                <NewsSlider
+                  items={items}
+                  settings={sliderSettings}
+                  
+                />
+              )}                 
+            </>
+          ))}                         
         </Row>
       </Container>
     </div>

@@ -32,11 +32,10 @@ function Header() {
           </Row>
         </Container>
       </div>
-      <Container>
-        <Row>
-          <h1 className="main-title">Legendary Vibes</h1>
-        </Row>
-      </Container>
+     
+      <div className="h1-container">
+      </div>
+
     </>
   );
 }
