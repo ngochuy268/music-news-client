@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Col, Container, Row } from "react-bootstrap";
-import { useParams } from 'react-router-dom';
 import { useSingerController } from '../../../controllers/singerController';
-import SingleNews from './SingleNews';
 import NewsSlider from './NewsSlider';
 import PacmanLoader from "react-spinners/PacmanLoader";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import '../../../css/style.css';
-
 function Singer({ news, loading }) {
+  
   const {
     getNewsByAuthor,
     sliderSettings,
@@ -18,6 +16,7 @@ function Singer({ news, loading }) {
     toggleSlider,
   } = useSingerController(news);
   const newsAuthor = getNewsByAuthor(news);
+console.log(newsAuthor)
 
   useEffect(() => {
     if (!loading) {
@@ -45,33 +44,23 @@ function Singer({ news, loading }) {
     <div className="cat-singer-news" style={{margin: '40px 0'}}>
       <Container>
         <Row>   
-          {newsAuthor.map(({author, items}, index) => (
-            <>
-              <h2 key={index}>{author}</h2>
-              <button
-                onClick={() => toggleSlider(index)}
-                style={{
-                  padding: '10px 20px',
-                  backgroundColor: '#007bff',
-                  color: '#fff',
-                  border: 'none',
-                  borderRadius: '5px',
-                  cursor: 'pointer',
-                  marginBottom: '30px',
-                  width: 'fit-content',
-                  marginLeft: '12px'
-                }}
-              >
-                {showSliders[index] ? 'Hide News' : 'Show News'}
+          {newsAuthor.map(({author,avatar, items}, index) => (
+            <div className="wrapper">
+              <div className='ribbon'>News</div>
+                <div className="avatar-wrapper">
+                <img src={`/avatar/${avatar}`} className='avatar' loading="lazy"></img>
+                <h2 key={index}>{author}</h2>
+              </div>
+              <button onClick={() => toggleSlider(index)} className='show-hide-btn'>
+                {showSliders[index] ? 'Hide' : 'Show'}
               </button>
               {showSliders[index] && (
                 <NewsSlider
                   items={items}
-                  settings={sliderSettings}
-                  
+                  settings={sliderSettings}                  
                 />
-              )}                 
-            </>
+              )}              
+            </div>
           ))}                         
         </Row>
       </Container>

@@ -2,16 +2,18 @@ import { useEffect, useState } from "react";
 
 export const useSingerController = (news) => {
   const [showSliders, setShowSliders] = useState([]);
-  
 
-  const getNewsByAuthor= () => {
+  const getNewsByAuthor = () => {
     const authors = [...new Set(news.map(item => item.author))];
-    return authors.map(author => ({
-      author,
-      items: news.filter(item => item.author === author)
-    }));
-  };
-
+    return authors.map(author => {
+        const authorData = news.find(item => item.author === author);
+        return {
+            author,
+            avatar: authorData.avatar,
+            items: news.filter(item => item.author === author)
+        };
+    });
+};
 
   useEffect(() => {
     if (showSliders.length !== getNewsByAuthor().length) {

@@ -94,7 +94,7 @@ function NewsSlider({ items, settings }) {
   ) : (
     <>
       {chunkNews.map((items, index) => (  
-        <Slider {...settings} style={{ margin: "30px 0" }} key={index}>
+        <Slider {...settings} key={index}>
           {items.map((item, index) => (
             <div key={index}>
               <Col md={11} style={{ borderRadius: "20px", overflow: "hidden" }}>

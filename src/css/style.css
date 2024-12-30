@@ -17,6 +17,12 @@ a {
   font-style: normal;
 }
 
+button {
+  font-family: "Dosis", serif !important;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
 .favicon {
   border-radius: 50%;
 }
@@ -837,9 +843,8 @@ button.btn:hover {
 
 .cat-singer-news h2 {
   color: #000000;
-  margin-bottom: 30px;
-  padding-bottom: 15px;
-  border-bottom: 3px double #000000;
+  margin-left: 10px;
+  /* border-bottom: 3px double #000000; */
 }
 
 .cat-singer-news .cn-img {
@@ -949,6 +954,61 @@ button.btn:hover {
 .cat-singer-news .slick-next::before {
   content: "\f105";
 }
+
+.cat-singer-news .wrapper {
+  position: relative;
+  margin-bottom: 100px;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: #ff6f61;
+  box-shadow: 0px 0px 15px 1px rgba(0,0,0,0.75);
+
+}
+
+.cat-singer-news .ribbon {
+  position: absolute;
+  top: 10px;
+  background-color: rgb(255, 87, 34);
+  color: rgb(255, 255, 255);
+  font-size: 14px;
+  font-weight: bold;
+  width: 100px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: rotate(45deg);
+  clip-path: polygon(30% 0%, 70% 0%, 100% 100%, 0% 100%);
+  z-index: 10;
+  right: -24px;
+}
+
+.cat-singer-news .show-hide-btn {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 30px;
+  width: fit-content;
+  margin-left: 12px;
+  font-family: "Dosis", serif !important;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.cat-singer-news .avatar-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.cat-singer-news .avatar {
+  width: 100px;
+  border-radius: 50%;
+}
+
 
 
 /**********************************/
