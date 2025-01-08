@@ -75,17 +75,8 @@ function NewsSlider({ items, settings }) {
         </div>
       ))}
       {visibleItems < items.length && (
-        <button
+        <button className="show-more-btn"
           onClick={handleShowMore}
-          style={{
-            padding: "10px 20px",
-            backgroundColor: "#007bff",
-            color: "#fff",
-            border: "none",
-            borderRadius: "5px",
-            cursor: "pointer",
-            marginTop: "10px",
-          }}
         >
           Show More
         </button>

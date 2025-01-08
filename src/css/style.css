@@ -837,6 +837,12 @@ button.btn:hover {
   padding: 0;
 }
 
+@media (max-width: 611px) {
+  .cat-singer-news {
+    padding: 0 20px;
+  }
+}
+
 .cat-singer-news .col-md-6 {
   margin-bottom: 30px;
 }
@@ -960,9 +966,8 @@ button.btn:hover {
   margin-bottom: 100px;
   border-radius: 10px;
   padding: 20px;
-  background-color: #ff6f61;
-  box-shadow: 0px 0px 15px 1px rgba(0,0,0,0.75);
-
+  background: linear-gradient(135deg, #ff7e5f, #feb47b);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .cat-singer-news .ribbon {
@@ -998,6 +1003,23 @@ button.btn:hover {
   font-style: normal;
 }
 
+.cat-singer-news .show-hide-btn:hover {
+  background-color: #0056b3;
+}
+
+.cat-singer-news  .show-more-btn:hover {
+  background-color: #0056b3;
+}
+
+.cat-singer-news .show-more-btn {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
 .cat-singer-news .avatar-wrapper {
   display: flex;
   align-items: center;
