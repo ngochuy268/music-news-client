@@ -5,12 +5,13 @@ import { faMapMarkerAlt, faEnvelope, faPhone } from '@fortawesome/free-solid-svg
 import { faTwitter, faFacebookF, faLinkedinIn, faInstagram, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { ToastContainer } from 'react-toastify';
 import { useContactController } from '../../controllers/contactController';
+import ReCAPTCHA from 'react-google-recaptcha';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../css/style.css';
 import 'react-toastify/dist/ReactToastify.css';
 
 function Contact() {
-  const { formData, handleChange, handleSubmit } = useContactController();
+  const { formData, handleChange, handleSubmit, handleCaptchaChange,recaptchaRef  } = useContactController();
 
   useEffect(() => {
     document.title = "Contact us";
@@ -67,6 +68,13 @@ function Contact() {
                       required
                     />
                   </Form.Group>
+                  <div className="recaptcha">
+                    <ReCAPTCHA
+                        ref={recaptchaRef}
+                        sitekey="6LefuK4qAAAAAFSbFowPpF5psik_vqc5k3-nRQ8l"
+                        onChange={handleCaptchaChange}
+                      />
+                  </div>
                   <Button variant="primary" type="submit">
                     Send Message
                   </Button>

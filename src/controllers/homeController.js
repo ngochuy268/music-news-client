@@ -14,13 +14,25 @@ export const useHomeController = (news) => {
       const types = [...new Set(news.map(item => item.type))];
       return types.map(type => ({
         type,
-        items: news.filter(item => item.type === type)
+        items: news
+        .filter(item => item.type === type) 
+        .sort(() => Math.random() - 0.5) 
+        .slice(0, 4) 
       }));
     };
+
+    // Truncate
+    const truncate = (content, maxLength) => {
+      if (content.length > maxLength) {
+        return content.substring(0, maxLength) + '...';
+      }
+      return content;
+    }
   
     return {
       getRandomNews,
       getAllRandomNews,
-      getNewsByTypes
+      getNewsByTypes,
+      truncate
     };
   };

@@ -1,5 +1,4 @@
 import { Container, Row, Col } from "react-bootstrap";
-import img from '../../img/3-way.jpg';
 import { Link, useLocation } from "react-router-dom";
 
 const SearchResult = () => {

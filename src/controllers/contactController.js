@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import emailService from '../services/emailService';
 import { toast } from 'react-toastify';
 
@@ -7,13 +7,20 @@ export const useContactController = () => {
     name: '',
     email: '',
     subject: '',
-    message: ''
+    message: '',
+    captcha: ''
   });
+  const recaptchaRef = useRef(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
+
+  const handleCaptchaChange = (value) => {
+    setFormData({ ...formData, captcha: value });
+  };
+
 
   const validateForm = () => {
     toast.dismiss();
@@ -30,12 +37,17 @@ export const useContactController = () => {
       return false;
     }
 
+    if (!formData.captcha) {
+      toast.error('Please verify that you are not a robot!');
+      return false;
+    }
+
     return true;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (!validateForm()) return;
 
     try {
@@ -46,8 +58,13 @@ export const useContactController = () => {
         name: '',
         email: '',
         subject: '',
-        message: ''
+        message: '',
+        captcha: ''
       });
+
+      if (recaptchaRef.current) {
+        recaptchaRef.current.reset();
+      }
     } catch (error) {
       console.error('Error sending email:', error);
       toast.error('Failed to send email. Please try again later!');
@@ -57,6 +74,8 @@ export const useContactController = () => {
   return {
     formData,
     handleChange,
-    handleSubmit
+    handleSubmit,
+    handleCaptchaChange,
+    recaptchaRef
   };
 };

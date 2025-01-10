@@ -5,7 +5,7 @@ body {
   color: #000000;
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
-  background: url(../img/img-gradient.jpg);
+  background-color: #f7f7f7 !important;
 }
 
 a {
@@ -372,13 +372,24 @@ button.btn:hover {
 .h1-container {
   background: url(../img/background-img.jpg) no-repeat center; 
   background-size: cover;
-  height: 200px;
+  height: 300px;
 }
 
 
 .search-container {
   position: relative;
   margin-left: auto;
+}
+
+.search-container button {
+  background-color: #ff6f61;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.search-container button:hover {
+  background-color: #ff6f61;
+  color: white;
 }
 
 .search-results-dropdown {
@@ -392,12 +403,10 @@ button.btn:hover {
   max-height: 400px;
   overflow-y: auto;
   z-index: 1000;
-   /* Thêm animation */
    animation: slideDown 0.3s ease-out forwards;
    transform-origin: top center;
 }
 
-/* Định nghĩa keyframes cho animation */
 @keyframes slideDown {
   from {
     opacity: 0;
@@ -440,7 +449,6 @@ button.btn:hover {
   color: #666;
 }
 
-/* Thêm style cho scrollbar */
 .search-results-dropdown::-webkit-scrollbar {
   width: 6px;
 }
@@ -538,7 +546,8 @@ button.btn:hover {
 }
 
 .navbar-dark .navbar-nav .nav-link:hover{
-  color: #3a0c08;
+  color: #ff6f61;
+  font-weight: 900;
 }
 
 .nav-bar .dropdown-menu {
@@ -549,7 +558,7 @@ button.btn:hover {
 @media (min-width: 768px) {
   .nav-bar,
   .nav-bar .navbar {
-    background: #ff6f61 !important;
+    background: #0d0d0d !important;
   }
 
   .nav-bar .navbar-brand {
@@ -567,7 +576,7 @@ button.btn:hover {
   .nav-bar,
   .nav-bar .navbar {
     padding: 3px 0;
-    background: #ff6f61 !important;
+    background: #0d0d0d !important;
   }
 
   .nav-bar a.nav-link {
@@ -596,7 +605,7 @@ button.btn:hover {
   padding: 3px 0;
   text-align: center;
   font-size: 14px;
-  background: #ff6f61;
+  background: #0d0d0d;
   border: 1px solid #ffffff;
   border-radius: 4px;
 }
@@ -725,6 +734,91 @@ button.btn:hover {
   padding: 0;
   margin: 30px 0 130px 0;
 }
+
+.popular-cat-news-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.popular-cat-news {
+  width: calc(50% - 20px); /* Hai cột */
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.popular-cat-news:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.popular-cat-news-img {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+}
+
+.popular-cat-news-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.popular-cat-news:hover .popular-cat-news-img img {
+  transform: scale(1.1);
+}
+
+.popular-cat-news-content {
+  width: 100%;
+  padding: 15px;
+  text-align: center;
+}
+
+.popular-cat-news-content h3 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.popular-cat-news-content p {
+  font-size: 15px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+
+.popular-cat-news-content a {
+  display: inline-block;
+  text-decoration: none;
+  color: #007BFF;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.popular-cat-news-content a:hover {
+  color: #0056b3;
+}
+
+@media (max-width: 768px) { 
+  .popular-cat-news-wrapper {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .popular-cat-news {
+    width: 100%; 
+  }
+}
+
 
 .cat-news .row:not(:first-child) {
   padding-top: 100px;
@@ -966,7 +1060,7 @@ button.btn:hover {
   margin-bottom: 100px;
   border-radius: 10px;
   padding: 20px;
-  background: linear-gradient(135deg, #ff7e5f, #feb47b);
+  background-color: #ffffff;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -1024,9 +1118,19 @@ button.btn:hover {
   display: flex;
   align-items: center;
   margin-bottom: 30px;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.avatar-wrapper h2 {
+  margin-top: 10px;
+  color: #fff;
 }
 
 .cat-singer-news .avatar {
+  border: 5px solid #fff;
   width: 100px;
   border-radius: 50%;
 }
@@ -1302,7 +1406,6 @@ button.btn:hover {
 
 .single-news .slick-slide {
   position: relative;
-  /* margin: 0 15px; */
 }
 
 .sn-related-news-wrapper {
@@ -1390,6 +1493,10 @@ button.btn:hover {
 .sidebar {
   position: relative;
   width: 100%;
+  padding: 20px;
+  border: 1px solid #d4d8db;
+  border-radius: .75rem;
+  background-color: white;
 }
 
 .sidebar .sidebar-widget {
@@ -1581,6 +1688,11 @@ button.btn:hover {
   padding: 25px 0 15px 0;
 }
 
+.contact .recaptcha {
+  margin-bottom: 15px;
+  border-radius: 25px;
+}
+
 .contact .contact-form,
 .contact .contact-info {
   margin-bottom: 45px;
@@ -1626,7 +1738,7 @@ button.btn:hover {
 /********** Footer CSS ************/
 /**********************************/
 .ht-footer-wrapper {
-  background: url(../img/footer-bg.jpg);
+  background-color: #0d0d0d;
   padding: 80px 0;
 } 
 
