@@ -16,7 +16,6 @@ function Singer({ news, loading }) {
     toggleSlider,
   } = useSingerController(news);
   const newsAuthor = getNewsByAuthor(news);
-console.log(newsAuthor)
 
   useEffect(() => {
     if (!loading) {
