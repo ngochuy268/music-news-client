@@ -66,6 +66,7 @@ function Contact() {
                       value={formData.message}
                       onChange={handleChange}
                       required
+                      style={{height: '150px'}}
                     />
                   </Form.Group>
                   <div className="recaptcha">
